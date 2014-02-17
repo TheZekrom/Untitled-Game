@@ -1,4 +1,5 @@
 #pragma once
+#include "SDL_Setup.h"
 class CMain
 {
 public:
@@ -8,8 +9,6 @@ public:
 
 private:
 	bool quit;
-	SDL_Window* window;
-	SDL_Renderer* renderer;
-	SDL_Event* event;
+	CSDL_Setup*	csdl_setup;
 };
 
