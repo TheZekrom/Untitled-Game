@@ -17,7 +17,9 @@ CMain::CMain(int passed_ScreenWidth, int passed_ScreenHeight)
 
 CMain::~CMain()
 {
-	
+	delete csdl_setup;
+	delete bob;
+	delete grass;
 }
 
 void CMain::GameLoop(void)
@@ -25,11 +27,31 @@ void CMain::GameLoop(void)
 	while (!quit && csdl_setup->GetEvent()->type != SDL_QUIT)
 	{
 		csdl_setup->Begin();
-
 		grass->Draw();
-
 		bob->Draw();
-
+		switch (csdl_setup->GetEvent()->type){
+		case SDL_KEYDOWN:
+			switch (csdl_setup->GetEvent()->key.keysym.sym)
+			{
+			case SDLK_w:
+				bob->SetY(bob->GetY() - 3);
+				break;
+			case SDLK_a:
+				bob->SetX(bob->GetX() - 3);
+				break;
+			case SDLK_s:
+				bob->SetY(bob->GetY() + 3);
+				break;
+			case SDLK_d:
+				bob->SetX(bob->GetX() + 3);
+				break;
+			default:
+				break;
+			}
+			break;
+		default:
+			break;
+		}
 		csdl_setup->End();
 	}
 
