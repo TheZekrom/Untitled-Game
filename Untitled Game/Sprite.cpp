@@ -28,3 +28,28 @@ void CSprite::Draw()
 {
 	SDL_RenderCopy(renderer, image, NULL, &rect);
 }
+
+void CSprite::SetX(int X)
+{
+	rect.x = X;
+}
+void CSprite::SetY(int Y)
+{
+	rect.y = Y;
+}
+void CSprite::SetPos(int X, int Y)
+{
+	rect.x = X;
+	rect.y = Y;
+}
+
+int CSprite::GetX()
+{
+	return rect.x;
+}
+
+int CSprite::GetY()
+{
+	return rect.y;
+
+}
